@@ -1,5 +1,7 @@
+import { TaxForm } from "./components/TaxForm";
+
 function App() {
-    return <div>hello world</div>;
+    return <TaxForm />;
 }
 
 export default App;
