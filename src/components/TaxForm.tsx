@@ -6,6 +6,7 @@ import { fetchTaxBracket } from "../api/taxBracket";
 import { calculateTaxes } from "../utils/taxCalculator";
 import { TaxTable } from "./TaxTable";
 import { Button } from "./Button";
+import "./TaxForm.css";
 
 export const TaxForm = () => {
     const [annualIncome, setAnnualIncome] = useState(0);
@@ -32,7 +33,7 @@ export const TaxForm = () => {
         mutation.mutate(taxYear);
     };
     return (
-        <form onSubmit={onSubmit}>
+        <form onSubmit={onSubmit} className="tax-form">
             <CurrencyInput
                 value={annualIncome}
                 label="Annual Income"

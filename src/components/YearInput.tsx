@@ -26,7 +26,12 @@ export const YearInput = ({
     return (
         <div>
             {label ? <div>{label}</div> : null}
-            <input {...props} value={value} onChange={handleChange} />
+            <input
+                {...props}
+                className="year-input"
+                value={value}
+                onChange={handleChange}
+            />
             {additionalInfo ? <div>{additionalInfo}</div> : null}
         </div>
     );

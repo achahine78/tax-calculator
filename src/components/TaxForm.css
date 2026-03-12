@@ -1,0 +1,12 @@
+.tax-form {
+    display: flex;
+    flex-direction: column;
+
+    .year-input, .currency-input {
+        width: 100%;
+    }
+}
+
+.tax-form > * {
+    flex: 1;
+}
