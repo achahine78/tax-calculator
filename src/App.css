@@ -6,5 +6,9 @@
         flex: 1;
         padding: 16px;
         max-width: 512px;
+
+        h1 {
+            margin-bottom: 16px;
+        }
     }
 }
