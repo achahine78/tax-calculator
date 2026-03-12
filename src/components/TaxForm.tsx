@@ -15,7 +15,7 @@ export const TaxForm = () => {
 
     const mutation = useMutation({
         mutationFn: fetchTaxBracket,
-        retry: 3,
+        retry: 2,
         retryDelay: (attempt) => attempt * 1000, // exponential backoff
         onSuccess: (data) => {
             setTaxBrackets(data.tax_brackets);
