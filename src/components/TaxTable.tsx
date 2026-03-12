@@ -1,3 +1,4 @@
+import { formatMoney, formatRate, formatTaxBracket } from "../utils/formatting";
 import type { TaxCalculation } from "../utils/taxCalculator";
 
 import "./TaxTable.css";
@@ -16,15 +17,15 @@ export const TaxTable = ({ taxes }: Props) => {
             <div className="tax-table-header">
                 <div className="tax-table-header__column">
                     <div>Gross Income</div>
-                    <div>{taxes.annualIncome}</div>
+                    <div>{formatMoney({ num: taxes.annualIncome })}</div>
                 </div>
                 <div className="tax-table-header__column">
                     <div>Total Tax</div>
-                    <div>{taxes.totalTax}</div>
+                    <div>{formatMoney({ num: taxes.totalTax })}</div>
                 </div>
                 <div className="tax-table-header__column">
                     <div>Effective Rate</div>
-                    <div>{taxes.effectiveRate}</div>
+                    <div>{formatRate(taxes.effectiveRate)}</div>
                 </div>
             </div>
             <div className="tax-table">
@@ -36,10 +37,14 @@ export const TaxTable = ({ taxes }: Props) => {
                 {taxes.taxesPerBracket.map(({ max, min, rate, taxOwed }) => (
                     <div className="tax-table__row">
                         <div className="tax-table__column">
-                            {min}-{max}
+                            {formatTaxBracket(min, max)}
                         </div>
-                        <div className="tax-table__column">{rate}</div>
-                        <div className="tax-table__column">{taxOwed}</div>
+                        <div className="tax-table__column">
+                            {formatRate(rate)}
+                        </div>
+                        <div className="tax-table__column">
+                            {formatMoney({ num: taxOwed })}
+                        </div>
                     </div>
                 ))}
             </div>

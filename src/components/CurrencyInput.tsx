@@ -16,14 +16,6 @@ export const CurrencyInput = ({
     additionalInfo,
     ...props
 }: Props) => {
-    // const format = (num: number) =>
-    //     new Intl.NumberFormat(locale, {
-    //         style: "currency",
-    //         currency,
-    //     }).format(num);
-
-    // const formattedValue = format(value);
-
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const raw = e.target.value.replace(/[^\d.-]/g, "");
         const numeric = parseFloat(raw);
