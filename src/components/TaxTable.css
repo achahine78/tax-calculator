@@ -1,0 +1,27 @@
+.tax-table-container {
+    .tax-table-header {
+        display: flex;
+
+        .tax-table-header__column {
+            flex: 1;
+        }
+    }
+
+    .tax-table {
+        border: solid 1px #18181b;
+        border-radius: 8px;
+
+        .tax-table__row {
+            display: flex;
+            padding: 4px 8px;
+
+            .tax-table__column {
+                flex: 1;
+            }
+        }
+
+        .tax-table__row:not(:last-child) {
+            border-bottom: solid 1px #18181b;
+        }
+    }
+}
