@@ -9,7 +9,7 @@ type Props = React.ButtonHTMLAttributes<HTMLButtonElement> & {
 export const Button = ({ children, disabled, loading, ...props }: Props) => {
     return (
         <button {...props} className="button" disabled={disabled || loading}>
-            {children}
+            {loading ? <span className="button-spinner" /> : children}
         </button>
     );
 };

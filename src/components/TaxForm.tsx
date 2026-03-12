@@ -14,7 +14,6 @@ export const TaxForm = () => {
     const [taxBrackets, setTaxBrackets] = useState([]);
 
     const taxes = calculateTaxes(annualIncome, taxBrackets);
-    console.log(taxes);
 
     const mutation = useMutation({
         mutationFn: fetchTaxBracket,
@@ -32,6 +31,7 @@ export const TaxForm = () => {
         e.preventDefault();
         mutation.mutate(taxYear);
     };
+
     return (
         <form onSubmit={onSubmit} className="tax-form">
             <CurrencyInput
@@ -40,7 +40,9 @@ export const TaxForm = () => {
                 onChange={setAnnualIncome}
             />
             <YearInput value={taxYear} label="Tax Year" onChange={setTaxYear} />
-            <Button type="submit">Calculate Taxes</Button>
+            <Button type="submit" loading={mutation.isPending}>
+                Calculate Taxes
+            </Button>
             <TaxTable taxes={taxes} />
         </form>
     );
