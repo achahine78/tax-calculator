@@ -1,3 +1,18 @@
+export type ProcessedTaxBracket = {
+    min: number;
+    max?: number;
+    rate: number;
+    taxableIncome: number;
+    taxOwed: number;
+};
+
+export type TaxCalculation = {
+    annualIncome: number;
+    totalTax: number;
+    effectiveRate: number;
+    taxesPerBracket: ProcessedTaxBracket[];
+};
+
 type TaxBracket = {
     min: number;
     max?: number;
@@ -25,8 +40,8 @@ export const calculateTaxes = (
 
         taxesPerBracket.push({
             ...bracket,
-            taxable_income: taxable,
-            tax_owed: tax,
+            taxableIncome: taxable,
+            taxOwed: tax,
         });
     }
 

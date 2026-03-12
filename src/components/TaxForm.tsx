@@ -4,6 +4,7 @@ import { YearInput } from "./YearInput";
 import { useMutation } from "@tanstack/react-query";
 import { fetchTaxBracket } from "../api/taxBracket";
 import { calculateTaxes } from "../utils/taxCalculator";
+import { TaxTable } from "./TaxTable";
 
 export const TaxForm = () => {
     const [annualIncome, setAnnualIncome] = useState(0);
@@ -34,6 +35,7 @@ export const TaxForm = () => {
             <CurrencyInput value={annualIncome} onChange={setAnnualIncome} />
             <YearInput value={taxYear} onChange={setTaxYear} />
             <button type="submit">Submit</button>
+            <TaxTable taxes={taxes} />
         </form>
     );
 };
