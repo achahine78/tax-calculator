@@ -5,6 +5,7 @@ import { useMutation } from "@tanstack/react-query";
 import { fetchTaxBracket } from "../api/taxBracket";
 import { calculateTaxes } from "../utils/taxCalculator";
 import { TaxTable } from "./TaxTable";
+import { Button } from "./Button";
 
 export const TaxForm = () => {
     const [annualIncome, setAnnualIncome] = useState(0);
@@ -32,9 +33,13 @@ export const TaxForm = () => {
     };
     return (
         <form onSubmit={onSubmit}>
-            <CurrencyInput value={annualIncome} onChange={setAnnualIncome} />
-            <YearInput value={taxYear} onChange={setTaxYear} />
-            <button type="submit">Submit</button>
+            <CurrencyInput
+                value={annualIncome}
+                label="Annual Income"
+                onChange={setAnnualIncome}
+            />
+            <YearInput value={taxYear} label="Tax Year" onChange={setTaxYear} />
+            <Button type="submit">Calculate Taxes</Button>
             <TaxTable taxes={taxes} />
         </form>
     );

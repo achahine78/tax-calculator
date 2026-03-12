@@ -7,6 +7,7 @@ const queryClient = new QueryClient();
 function App() {
     return (
         <QueryClientProvider client={queryClient}>
+            <h1>Tax Calculator</h1>
             <TaxForm />
         </QueryClientProvider>
     );

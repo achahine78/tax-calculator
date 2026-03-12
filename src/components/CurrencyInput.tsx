@@ -3,6 +3,8 @@ type Props = {
     onChange: (num: number) => void;
     locale?: string;
     currency?: string;
+    label?: string;
+    additionalInfo?: string;
 };
 
 export const CurrencyInput = ({
@@ -10,6 +12,8 @@ export const CurrencyInput = ({
     onChange,
     locale = "en-US",
     currency = "USD",
+    label,
+    additionalInfo,
     ...props
 }: Props) => {
     // const format = (num: number) =>
@@ -31,5 +35,11 @@ export const CurrencyInput = ({
         }
     };
 
-    return <input {...props} value={value} onChange={handleChange} />;
+    return (
+        <div>
+            {label ? <div>{label}</div> : null}
+            <input {...props} value={value} onChange={handleChange} />
+            {additionalInfo ? <div>{additionalInfo}</div> : null}
+        </div>
+    );
 };
