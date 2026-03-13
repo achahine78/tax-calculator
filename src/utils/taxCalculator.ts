@@ -39,10 +39,12 @@ export const calculateTaxes = (
         });
     }
 
+    const effectiveRate = totalTax / annualIncome;
+
     return {
         annualIncome,
-        totalTax: totalTax,
-        effectiveRate: totalTax / annualIncome,
-        taxesPerBracket: taxesPerBracket,
+        totalTax,
+        effectiveRate: isNaN(effectiveRate) ? 0 : effectiveRate,
+        taxesPerBracket,
     };
 };
