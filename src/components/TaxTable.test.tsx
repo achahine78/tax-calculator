@@ -107,7 +107,7 @@ describe("TaxTable", () => {
             expect(screen.getByText("$7,144.50")).toBeInTheDocument();
             expect(screen.getByText("$9,763.95")).toBeInTheDocument();
             expect(screen.getByText("$1,232.66")).toBeInTheDocument();
-            expect(screen.getByText("$0.00")).toBeInTheDocument();
+            expect(screen.getAllByText("$0.00").length).toBe(2);
         });
     });
 });
