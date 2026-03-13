@@ -13,10 +13,7 @@ export const formatMoney = ({
     }).format(num);
 
 export const formatTaxBracket = (min?: number, max?: number) => {
-    const result = [];
-    if (min) {
-        result.push(formatMoney({ num: min }));
-    }
+    const result = [formatMoney({ num: min ?? 0 })];
 
     if (max) {
         result.push(formatMoney({ num: max }));

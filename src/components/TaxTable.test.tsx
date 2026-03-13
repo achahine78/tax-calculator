@@ -79,7 +79,7 @@ describe("TaxTable", () => {
 
         it("formats each bracket range correctly", () => {
             render(<TaxTable taxes={baseTaxes} />);
-            expect(screen.getByText("$47,630.00")).toBeInTheDocument();
+            expect(screen.getByText("$0.00 - $47,630.00")).toBeInTheDocument();
             expect(
                 screen.getByText("$47,630.00 - $95,259.00"),
             ).toBeInTheDocument();

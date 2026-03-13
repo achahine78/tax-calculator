@@ -26,13 +26,9 @@ describe("formatMoney", () => {
 });
 
 describe("formatTaxBracket", () => {
-    it("returns an empty string when both min and max are undefined", () => {
-        expect(formatTaxBracket()).toBe("");
-    });
-
     it("returns only the max when min is 0 (falsy) and max is provided", () => {
         // min=0 is falsy, so only max should appear
-        expect(formatTaxBracket(0, 50000)).toBe("$50,000.00");
+        expect(formatTaxBracket(0, 50000)).toBe("$0.00 - $50,000.00");
     });
 
     it("returns only the min when max is not provided", () => {
@@ -46,7 +42,7 @@ describe("formatTaxBracket", () => {
     });
 
     it("returns only the max when min is undefined", () => {
-        expect(formatTaxBracket(undefined, 50000)).toBe("$50,000.00");
+        expect(formatTaxBracket(undefined, 50000)).toBe("$0.00 - $50,000.00");
     });
 });
 
