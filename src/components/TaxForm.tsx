@@ -1,35 +1,30 @@
 import { useState } from "react";
 import { CurrencyInput } from "./CurrencyInput";
 import { YearInput } from "./YearInput";
-import { useMutation } from "@tanstack/react-query";
-import { fetchTaxBracket } from "../api/taxBracket";
 import { calculateTaxes } from "../utils/taxCalculator";
 import { TaxTable } from "./TaxTable";
 import { Button } from "./Button";
 import "./TaxForm.css";
+import { ErrorBox } from "./ErrorBox";
+import { useFetchTaxBracket } from "../hooks/useFetchTaxBracket";
 
 export const TaxForm = () => {
     const [annualIncome, setAnnualIncome] = useState(0);
     const [taxYear, setTaxYear] = useState(0);
-    const [taxBrackets, setTaxBrackets] = useState([]);
 
+    const {
+        data,
+        error,
+        isPending,
+        mutate: executeFetchTaxBracket,
+    } = useFetchTaxBracket();
+
+    const taxBrackets = data?.tax_brackets ?? [];
     const taxes = calculateTaxes(annualIncome, taxBrackets);
-
-    const mutation = useMutation({
-        mutationFn: fetchTaxBracket,
-        retry: 2,
-        retryDelay: (attempt) => attempt * 1000, // exponential backoff
-        onSuccess: (data) => {
-            setTaxBrackets(data.tax_brackets);
-        },
-        onError: (error) => {
-            console.log(error);
-        },
-    });
 
     const onSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
         e.preventDefault();
-        mutation.mutate(taxYear);
+        executeFetchTaxBracket(taxYear);
     };
 
     return (
@@ -40,10 +35,11 @@ export const TaxForm = () => {
                 onChange={setAnnualIncome}
             />
             <YearInput value={taxYear} label="Tax Year" onChange={setTaxYear} />
-            <Button type="submit" loading={mutation.isPending}>
+            <Button type="submit" loading={isPending}>
                 Calculate Taxes
             </Button>
             <TaxTable taxes={taxes} />
+            {error && error.errors?.map((err) => <ErrorBox error={err} />)}
         </form>
     );
 };

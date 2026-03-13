@@ -1,3 +1,5 @@
+import type { TaxBrackets } from "../api/taxBracket";
+
 export type ProcessedTaxBracket = {
     min: number;
     max?: number;
@@ -12,14 +14,6 @@ export type TaxCalculation = {
     effectiveRate: number;
     taxesPerBracket: ProcessedTaxBracket[];
 };
-
-type TaxBracket = {
-    min: number;
-    max?: number;
-    rate: number;
-};
-
-export type TaxBrackets = TaxBracket[];
 
 export const calculateTaxes = (
     annualIncome: number,
