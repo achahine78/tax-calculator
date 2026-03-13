@@ -33,7 +33,7 @@ export const TaxForm = () => {
     );
 
     return (
-        <form onSubmit={onSubmit} className="tax-form">
+        <form onSubmit={onSubmit} className="tax-form" aria-label="tax-form">
             <NumericalInput
                 value={annualIncome}
                 label="Annual Income"
