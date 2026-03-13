@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useCallback, useMemo, useState } from "react";
 import { NumericalInput } from "./NumericalInput";
 import { calculateTaxes } from "../utils/taxCalculator";
 import { TaxTable } from "./TaxTable";
@@ -19,12 +19,18 @@ export const TaxForm = () => {
     } = useFetchTaxBracket();
 
     const taxBrackets = data?.tax_brackets ?? [];
-    const taxes = calculateTaxes(annualIncome, taxBrackets);
+    const taxes = useMemo(
+        () => calculateTaxes(annualIncome, taxBrackets),
+        [annualIncome, taxBrackets],
+    );
 
-    const onSubmit = (e: React.SubmitEvent<HTMLFormElement>) => {
-        e.preventDefault();
-        executeFetchTaxBracket(taxYear);
-    };
+    const onSubmit = useCallback(
+        (e: React.SubmitEvent<HTMLFormElement>) => {
+            e.preventDefault();
+            executeFetchTaxBracket(taxYear);
+        },
+        [taxYear, executeFetchTaxBracket],
+    );
 
     return (
         <form onSubmit={onSubmit} className="tax-form">
