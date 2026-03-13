@@ -9,7 +9,7 @@ export const useFetchTaxBracket = () => {
     const mutation = useMutation<TaxBracketResponse, TaxBracketError, number>({
         mutationFn: fetchTaxBracket,
         retry: 2,
-        retryDelay: (attempt) => attempt * 1000, // exponential backoff
+        retryDelay: (attempt) => attempt * 1000, // linear backoff
     });
 
     return mutation;

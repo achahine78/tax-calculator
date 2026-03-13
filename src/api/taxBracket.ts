@@ -11,8 +11,8 @@ export type TaxBracketResponse = {
 };
 
 export type APIError = {
-    code: "INTERNAL_SERVER_ERROR" | string;
-    field?: "";
+    code: string;
+    field?: string;
     message?: string;
 };
 
