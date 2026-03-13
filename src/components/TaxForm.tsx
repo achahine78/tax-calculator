@@ -48,7 +48,8 @@ export const TaxForm = () => {
                 Calculate Taxes
             </Button>
             {taxBrackets.length > 0 && <TaxTable taxes={taxes} />}
-            {error && error.errors?.map((err) => <ErrorBox error={err} />)}
+            {error &&
+                error.errors?.map((err, i) => <ErrorBox error={err} key={i} />)}
         </form>
     );
 };

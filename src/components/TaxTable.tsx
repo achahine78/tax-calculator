@@ -31,7 +31,7 @@ export const TaxTable = ({ taxes }: Props) => {
                     <div className="tax-table__column">Tax Owed</div>
                 </div>
                 {taxes.taxesPerBracket.map(({ max, min, rate, taxOwed }) => (
-                    <div className="tax-table__row">
+                    <div className="tax-table__row" key={`${max}-${min}`}>
                         <div className="tax-table__column">
                             {formatTaxBracket(min, max)}
                         </div>
