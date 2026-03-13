@@ -36,12 +36,14 @@ export const TaxForm = () => {
         <form onSubmit={onSubmit} className="tax-form" aria-label="tax-form">
             <NumericalInput
                 value={annualIncome}
-                label="Annual Income"
+                label="Annual Income ($)"
+                name="annual-income"
                 onChange={setAnnualIncome}
             />
             <NumericalInput
                 value={taxYear}
                 label="Tax Year"
+                name="tax-year"
                 onChange={setTaxYear}
             />
             <Button type="submit" loading={isPending}>

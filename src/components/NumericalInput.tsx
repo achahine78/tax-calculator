@@ -11,6 +11,7 @@ export const NumericalInput = ({
     value = 0,
     onChange,
     label,
+    name,
     ...props
 }: Props) => {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -26,7 +27,7 @@ export const NumericalInput = ({
 
     return (
         <div>
-            {label ? <div>{label}</div> : null}
+            {label ? <label htmlFor={name}>{label}</label> : null}
             <input
                 {...props}
                 value={value}

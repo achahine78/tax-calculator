@@ -31,7 +31,7 @@ describe("TaxForm", () => {
     describe("rendering", () => {
         it("renders the annual income input", () => {
             render(<TaxForm />);
-            expect(screen.getByText("Annual Income")).toBeInTheDocument();
+            expect(screen.getByText("Annual Income ($)")).toBeInTheDocument();
         });
 
         it("renders the tax year input", () => {
