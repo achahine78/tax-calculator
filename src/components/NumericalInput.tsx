@@ -2,14 +2,12 @@ type Props = {
     value: number;
     onChange: (num: number) => void;
     label?: string;
-    additionalInfo?: string;
-};
+} & React.InputHTMLAttributes<HTMLInputElement>;
 
 export const NumericalInput = ({
     value = 0,
     onChange,
     label,
-    additionalInfo,
     ...props
 }: Props) => {
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -32,7 +30,6 @@ export const NumericalInput = ({
                 className="numerical-input"
                 onChange={handleChange}
             />
-            {additionalInfo ? <div>{additionalInfo}</div> : null}
         </div>
     );
 };
