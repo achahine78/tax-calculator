@@ -4,8 +4,7 @@
 
     gap: 24px;
 
-    .year-input,
-    .currency-input {
+    .numerical-input {
         width: 100%;
     }
 }

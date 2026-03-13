@@ -28,8 +28,8 @@ export const NumericalInput = ({
             {label ? <div>{label}</div> : null}
             <input
                 {...props}
-                className="year-input"
                 value={value}
+                className="numerical-input"
                 onChange={handleChange}
             />
             {additionalInfo ? <div>{additionalInfo}</div> : null}
