@@ -1,6 +1,5 @@
 import { useState } from "react";
-import { CurrencyInput } from "./CurrencyInput";
-import { YearInput } from "./YearInput";
+import { NumericalInput } from "./NumericalInput";
 import { calculateTaxes } from "../utils/taxCalculator";
 import { TaxTable } from "./TaxTable";
 import { Button } from "./Button";
@@ -29,12 +28,16 @@ export const TaxForm = () => {
 
     return (
         <form onSubmit={onSubmit} className="tax-form">
-            <CurrencyInput
+            <NumericalInput
                 value={annualIncome}
                 label="Annual Income"
                 onChange={setAnnualIncome}
             />
-            <YearInput value={taxYear} label="Tax Year" onChange={setTaxYear} />
+            <NumericalInput
+                value={taxYear}
+                label="Tax Year"
+                onChange={setTaxYear}
+            />
             <Button type="submit" loading={isPending}>
                 Calculate Taxes
             </Button>

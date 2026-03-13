@@ -5,7 +5,7 @@ type Props = {
     additionalInfo?: string;
 };
 
-export const YearInput = ({
+export const NumericalInput = ({
     value = 0,
     onChange,
     label,
