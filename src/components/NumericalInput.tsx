@@ -1,8 +1,11 @@
-type Props = {
+type Props = Omit<
+    React.InputHTMLAttributes<HTMLInputElement>,
+    "onChange" | "value"
+> & {
     value: number;
     onChange: (num: number) => void;
     label?: string;
-} & React.InputHTMLAttributes<HTMLInputElement>;
+};
 
 export const NumericalInput = ({
     value = 0,
