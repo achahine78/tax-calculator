@@ -41,7 +41,7 @@ export const TaxForm = () => {
             <Button type="submit" loading={isPending}>
                 Calculate Taxes
             </Button>
-            <TaxTable taxes={taxes} />
+            {taxBrackets.length > 0 && <TaxTable taxes={taxes} />}
             {error && error.errors?.map((err) => <ErrorBox error={err} />)}
         </form>
     );

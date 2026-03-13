@@ -8,10 +8,6 @@ type Props = {
 };
 
 export const TaxTable = ({ taxes }: Props) => {
-    if (taxes.taxesPerBracket.length === 0) {
-        return null;
-    }
-
     return (
         <div className="tax-table-container">
             <div className="tax-table-header">
